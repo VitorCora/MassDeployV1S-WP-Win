@@ -61,7 +61,7 @@ On de **Add permissions** page, under the **Permissions policies**, look for the
 
 Now we are on the last page.
 
-On the page **Name, review, and create **
+On the page **Name, review, and create**
 
 Under the **Role Name** paste 
  - EnablesEC2ToAccessSystemsManagerRole
@@ -149,7 +149,7 @@ You may use console access or AWS CLI.
     - Click on the yellow button on the Right side of the page that says **Upload**
    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/a940b014-7524-468e-8cb2-9657a114e88e)
         
-    - On the upload page click on **Add files**
+    - On the upload page click on **Add Files**
     
     - On the pop-up Find your Agent and click on Open
 ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7b3187ea-6982-4c8d-84db-7e3bd5a6bb5e)
@@ -202,9 +202,7 @@ Under the Bucket policy session, click on Edit and add the following permission:
 {
 
     "Version": "2012-10-17",
-    
-    "Statement": [
-    
+    "Statement": [   
         {
             "Sid": "Allowobjectaccess",
             "Effect": "Allow",
