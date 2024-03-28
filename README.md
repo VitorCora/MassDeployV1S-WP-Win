@@ -196,7 +196,7 @@ Look for the **Permissions Tab** and select it
 
 ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/7b0d62c0-6a2e-48e2-9082-71ef09318a7b)
 
-Under the BUcket policy session, click on Edit and add the following permission:
+Under the Bucket policy session, click on Edit and add the following permission:
 
 
 {
