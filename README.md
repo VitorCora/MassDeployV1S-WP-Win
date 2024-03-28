@@ -1,12 +1,22 @@
 # MassDeployV1S-WP-Win
 
-Proces to massively deploy **V1S&WP** agent to multiple **linux EC2** using **AWS SSM**
+Proces to massively deploy **V1S&WP** agent to multiple **Windows EC2 instances** using **AWS SSM**
+
+To maximize the compatibility, this project was developed using **Powershell version 1** 
+
+The following steps will help you to deploy the full Trend Micro Basecamp Agent, so this process is not intended for updates of previous Trend Micro Workload Security deployments, use it only for **new deployments**.
 
 This script and step-by-step was created based on the following AWS documentation:
 
     - https://aws.amazon.com/getting-started/hands-on/remotely-run-commands-ec2-instance-systems-manager/
 
-We are going to be using AWS System Manager - Node Management - Run Command for the following activity (Can also be triggered through AWS System Manager - Node Management - Fleet Manager)
+A second reference that was used to for this project, was its sister project for Linux EC2 instances and that can be found in the following link:
+    - https://github.com/VitorCora/MassDeployV1S-WP
+
+We are going to be using **AWS System Manager - Node Management - Run Command** for the following activity (Can also be triggered through AWS System Manager - Node Management - Fleet Manager)
+
+This script was crafted with a dual purpose, to work on massive cloud deployments and also for Onprem deployments via GPOs or SCCPs
+** The means to use this script in GPOs or SCCPs is **not contemplated** in this guide.
 
 # Pre requisites
 
@@ -15,18 +25,20 @@ All your instances must have a role that allows AWS SSM to access and manage the
 
 ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/4f2bcfac-9f3c-4098-bd17-4fc747f0af30)
 
-** Further tests and analysis on my environment proved that the IAM role doesn`t need to be added to the instance, this pre requisite may be avoided for the sake of time
+** **Further tests and analysis on my environment proved that the IAM role doesn`t need to be added to the instance, this pre requisite may be avoided for the sake of time**
 
 Working Trend Vision One tenant
 *Steps to the creation of the tenant on the the Step ##
 
-Upload the Linux agent to an AWS S3 bucket accessible to the instances that will be protected
+Upload the Windows agent to an AWS S3 bucket accessible to the instances/servers that will be protected
 *Steps to download the agent on the Step ####
 * Steps to create and allow public access of the agent in the Step #####
 
 # Create an IAM role to enable EC2 to access AWS System Manager
 
-** Further tests and analysis on my environment proved that the IAM role doesn`t need to be added to the instance, this pre requisite may be avoided for the sake of time
+**Further tests and analysis on my environment proved that the IAM role doesn`t need to be added to the instance, this pre requisite may be avoided for the sake of time**
+
+**You may jump for the next session**
 
 Go to the **IAM** service on your AWS console and click on **Roles**
  - https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles
@@ -202,15 +214,71 @@ Now click on **Save Changes** at the bottom right corner
 Copy and paste the following script into the Command Parameters session:
 
 <powershell>
-Set-Location 'C:\Users\Public\Downloads'
-$filepath = Join-Path $(Get-Location) "v1_endpoint_sensor.exe"
-Invoke-WebRequest -Uri ${PlatformURL} -OutFile $filepath
-Start-Process $filepath -Wait -NoNewWindow
+# Force PowerShell to use TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Define the URL from which to download the program
+$url = "https://**<YOUR BUCKET>**.s3.amazonaws.com/TMServerAgent_Windows.zip"
+
+# Define the path where the program will be downloaded
+$downloadPath = "$env:TEMP\TMServerAgent_Windows.zip"
+
+# Create a WebClient object
+$webClient = New-Object System.Net.WebClient
+
+# Download the program using the DownloadFile method (compatible with PowerShell v1)
+$webClient.DownloadFile($url, $downloadPath)
+
+# Check if the file was downloaded successfully
+if (Test-Path $downloadPath) {
+    Write-Host "Program downloaded successfully."
+    Write-Host "Running the program..."
+
+    # Extract the downloaded file using Shell.Application (compatible with PowerShell v1)
+    $shell = New-Object -ComObject Shell.Application
+    
+    # Define the destination folder path
+    $destinationFolderPath = "$env:TEMP\TMServerAgent"
+    
+    # Create the destination folder if it doesn't exist
+    if (-not (Test-Path $destinationFolderPath)) {
+        New-Item -ItemType Directory -Path $destinationFolderPath | Out-Null
+    }
+    
+    # Get the zip folder and destination folder objects
+    $zipFolder = $shell.NameSpace($downloadPath)
+    $destinationFolder = $shell.NameSpace($destinationFolderPath)
+    
+    # Check if the destination folder object is not null
+    if ($destinationFolder -ne $null) {
+        # Copy the items from the zip folder to the destination folder
+        $destinationFolder.CopyHere($zipFolder.Items(), 16)
+
+        # Replace 'EndpointBasecamp.exe' with the actual name of the executable you want to run from the extracted files
+        $programPath = "$env:TEMP\TMServerAgent\EndpointBasecamp.exe"
+        
+        # Check if the program exists in the destination folder
+        if (Test-Path $programPath) {
+            Write-Host "Running the program located at: $programPath"
+            Start-Process -FilePath $programPath
+        } else {
+            Write-Host "Error: Program not found at $programPath"
+        }
+    } else {
+        Write-Host "Error: Destination folder not accessible."
+    }
+} else {
+    Write-Host "Error: Failed to download the program from $url"
+}
 </powershell>  
+
+This code example can also be found in the main repository:
+    - 
 
 It should look like the following:
 
-![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/c8aeed3e-4ec1-40ec-a32a-cb01db4ffe31)
+![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/88c3f9cd-24b8-453d-957a-3c1ef77b0e45)
+
 
 Next step is to select the target instances
 
