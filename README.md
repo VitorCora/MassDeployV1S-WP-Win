@@ -120,16 +120,15 @@ On the Endpoint Inventory page, click On **Agent Installer** on the top right co
 
 A curtain will pop out:
     - On **Server & Workload Protection**
-        - Select your **Operating system**: Linux
+        - Select your **Operating system**: Windows
         - Leave the **Auto dectect** selection ticked 
-        - **OS Architecture**: Select your instance architecture
         - **Protection Manager**: Choose your Manager
         - CLick on the Blue circle to **download installer**
 
 ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/c7475981-94b4-48f5-bcf3-c5852f154cf3)
 
 
-After the download is ready, on your computer, rename the file as **TMServerAgent_Linux.tar**
+After the download is ready, on your computer, rename the file as **TMServerAgent_Windows.zip**
 
 # AWS S3 Bucket - part 2
 
@@ -140,19 +139,27 @@ Now it is time to upload your agent to your AWS S3 Bucket.
 You may use console access or AWS CLI.
 
 ## On the AWS Console, navigate to the AWS S3 page:
+    
     - https://s3.console.aws.amazon.com/s3/home?region=us-east-1#
+    
     - Locate your bucket and open it
         ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/8208ee40-eb58-4dcf-82d7-684569da106a)
+        
     - Click on the yellow button on the Right side of the page that says **Upload**
         ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/1c5076cc-4221-4c02-a528-7aa147db13b6)
+        
     - On the upload page click on Add files
+    
     - On the pop-up Find your Agent and click on Open
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/9f1fdcc7-16b1-4ce8-a94d-400b6888445d)
+        ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/a7ed5517-ec61-4edd-8636-907ed87ce488)
+
+        
     - Now you just need to click on the Orange button that says **Upload** on the bottom of the page
         ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/befd8585-1af0-4602-a0d4-6d7482dfbe97)
 
 You should have something similar to the following:
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/2a1a2636-0961-4fc4-bcf7-c3e4eec0c079)
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7f7b55c5-8da3-4225-aff6-dd7b379eefea)
+
 
 ## Using bash and AWS CLI
 
@@ -273,7 +280,7 @@ if (Test-Path $downloadPath) {
 </powershell>  
 
 This code example can also be found in the main repository:
-    - 
+    - https://github.com/VitorCora/MassDeployV1S-WP-Win/blob/main/DeployBasecampWin.ps1
 
 It should look like the following:
 
