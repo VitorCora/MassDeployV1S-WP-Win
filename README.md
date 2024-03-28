@@ -125,7 +125,8 @@ A curtain will pop out:
         - **Protection Manager**: Choose your Manager
         - CLick on the Blue circle to **download installer**
 
-![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/c7475981-94b4-48f5-bcf3-c5852f154cf3)
+![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/6159bd0f-291b-4bd5-8246-5a9fa15ee4d7)
+
 
 
 After the download is ready, on your computer, rename the file as **TMServerAgent_Windows.zip**
