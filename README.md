@@ -143,16 +143,16 @@ You may use console access or AWS CLI.
     - https://s3.console.aws.amazon.com/s3/home?region=us-east-1#
     
     - Locate your bucket and open it
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/8208ee40-eb58-4dcf-82d7-684569da106a)
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/2f5b8729-b9b2-41c3-ba85-479b118d0c4b)
         
     - Click on the yellow button on the Right side of the page that says **Upload**
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/1c5076cc-4221-4c02-a528-7aa147db13b6)
+   ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7fa2f70d-6dd5-4086-9c2a-292ffd8e94a9)
         
     - On the upload page click on Add files
     
     - On the pop-up Find your Agent and click on Open
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/a7ed5517-ec61-4edd-8636-907ed87ce488)
 
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/d537008c-a636-44be-8856-4574353980be)
         
     - Now you just need to click on the Orange button that says **Upload** on the bottom of the page
         ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/befd8585-1af0-4602-a0d4-6d7482dfbe97)
