@@ -198,9 +198,13 @@ Look for the **Permissions Tab** and select it
 
 Under the BUcket policy session, click on Edit and add the following permission:
 
+
 {
+
     "Version": "2012-10-17",
+    
     "Statement": [
+    
         {
             "Sid": "Allowobjectaccess",
             "Effect": "Allow",
