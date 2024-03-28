@@ -156,7 +156,7 @@ You may use console access or AWS CLI.
 
         
     - Now you just need to click on the Orange button that says **Upload** on the bottom of the page
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/befd8585-1af0-4602-a0d4-6d7482dfbe97)
+ ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/3617be11-a628-4437-8e92-e889f25d400e)
 
 You should have something similar to the following:
     ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/483053f4-7105-404f-b051-827801ddc7ce)
