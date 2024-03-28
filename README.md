@@ -143,22 +143,22 @@ You may use console access or AWS CLI.
     - https://s3.console.aws.amazon.com/s3/home?region=us-east-1#
     
     - Locate your bucket and open it
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/2f5b8729-b9b2-41c3-ba85-479b118d0c4b)
+![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/34948779-2b0d-4e97-a719-f00cfc6dc11c)
         
     - Click on the yellow button on the Right side of the page that says **Upload**
-   ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7fa2f70d-6dd5-4086-9c2a-292ffd8e94a9)
+   ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/a940b014-7524-468e-8cb2-9657a114e88e)
         
-    - On the upload page click on Add files
+    - On the upload page click on **Add files**
     
     - On the pop-up Find your Agent and click on Open
+![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7b3187ea-6982-4c8d-84db-7e3bd5a6bb5e)
 
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/d537008c-a636-44be-8856-4574353980be)
         
     - Now you just need to click on the Orange button that says **Upload** on the bottom of the page
         ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/befd8585-1af0-4602-a0d4-6d7482dfbe97)
 
 You should have something similar to the following:
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/7f7b55c5-8da3-4225-aff6-dd7b379eefea)
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/483053f4-7105-404f-b051-827801ddc7ce)
 
 
 ## Using bash and AWS CLI
@@ -168,19 +168,20 @@ You should have something similar to the following:
 On the bash, move to the folder where your Agent lives.
 
 On this folder run the following command:
-    - aws s3 mv TMServerAgent_Linux.tar s3://**<YOUR BUCKET NAME>**/TMServerAgent_Linux.tar
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/983a639c-4a82-48d8-94be-dff7a2da96db)
+    - aws s3 mv TMServerAgent_Windows.zip s3://**<YOUR BUCKET NAME>**/TMServerAgent_Windows.zip
+        ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/b790ee68-b77f-4b48-a448-ccb9775b3cd8)
 
 You should have something similar to the following:
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/e26cd5e7-8ece-484e-8b19-a3a98a60b748)
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/46bd3de2-c282-4685-84a3-dbda33590ac8)
 
 ### AWS API PUT-OBJECT method
 
 On the bash, move to the folder where your Agent lives.
 
 On this folder run the following command:
-    - aws s3api put-object --bucket **<YOUR BUCKET NAME>** --key TMServerAgent_Linux.tar --body TMServerAgent_Linux.tar
-        ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/43f7eb16-9e35-46d6-ae06-7828e1e56b84)
+    - aws s3api put-object --bucket **<YOUR BUCKET NAME>** --key TMServerAgent_Windows.zip --body TMServerAgent_Windows.zip
+        ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/db448d7a-bc3b-4851-ac11-6935308c0283)
+
 You should have something similar to the following:
     ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/89983a30-4015-4bb2-a49d-a15fd3ad494b)
 
@@ -204,7 +205,7 @@ Under the BUcket policy session, click on Edit and add the following permission:
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "**<YOURBUCKETARN>**/TMServerAgent_Linux.tar"
+            "Resource": "**<YOURBUCKETARN>**/TMServerAgent_Windows.zip"
         }
     ]
 }
