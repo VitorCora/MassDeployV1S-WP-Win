@@ -161,7 +161,6 @@ You may use console access or AWS CLI.
 You should have something similar to the following:
     ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/483053f4-7105-404f-b051-827801ddc7ce)
 
-
 ## Using bash and AWS CLI
 
 ### AWS CLI MV method
@@ -184,7 +183,7 @@ On this folder run the following command:
         ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/db448d7a-bc3b-4851-ac11-6935308c0283)
 
 You should have something similar to the following:
-    ![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/89983a30-4015-4bb2-a49d-a15fd3ad494b)
+    ![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/2095240b-1458-42aa-af3e-c0f90efd23df)
 
 ## Make the agent public on the AWS S3 Bucket
 
@@ -198,9 +197,8 @@ Look for the **Permissions Tab** and select it
 
 Under the Bucket policy session, click on Edit and add the following permission:
 
-
+```
 {
-
     "Version": "2012-10-17",
     "Statement": [   
         {
@@ -212,9 +210,11 @@ Under the Bucket policy session, click on Edit and add the following permission:
         }
     ]
 }
+```
 
 Your should look somewhat like the following, but with your **BUCKET ARN** at the **Resource session** 
-![image](https://github.com/VitorCora/MassDeployV1S-WP/assets/59590152/2d3e2211-6fda-4316-8c13-917c8c0b3da7)
+![image](https://github.com/VitorCora/MassDeployV1S-WP-Win/assets/59590152/deb67e13-250a-4a66-9392-9213a8bc32ca)
+
 
 Now click on **Save Changes** at the bottom right corner
 
